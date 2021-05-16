@@ -9,7 +9,7 @@ const router = new express.Router()
 
 router.post('/stock/create', auth, async (req, res) => {
     try {
-        const stock = await createStock(req.body)
+        const stock = await createStock(req.user._id, req.body)
         res.send({ stock })
     } catch (e) {
         res.status(404).send({ error: e.message })
@@ -18,8 +18,10 @@ router.post('/stock/create', auth, async (req, res) => {
 
 router.get('/stock/:id', auth, async (req, res) => {
     try {
-        const stocks = await getStocks({ _id: req.params.id })
-        res.send( stocks[0] )
+        const stocks = await getStocks(req.user._id, { _id: req.params.id })
+        if (stocks[0])
+            res.send(stocks[0])
+        else res.send({})
     } catch (e) {
         res.status(404).send({ error: e.stack })
     }
@@ -27,7 +29,7 @@ router.get('/stock/:id', auth, async (req, res) => {
 
 router.get('/stock', auth, async (req, res) => {
     try {
-        const stocks = await getStocks()
+        const stocks = await getStocks(req.user._id)
         res.send({ stocks })
     } catch (e) {
         res.status(404).send({ error: e.stack })

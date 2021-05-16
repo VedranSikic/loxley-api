@@ -7,7 +7,7 @@ const stockRouter = require('./src/routers/stock-router')
 require('./src/db/mongoose')
 
 const app = express();
-const port = 8080||process.env.JWT_SECRET;
+const port = process.env.PORT||8080;
 
 app.use(cors())
 app.use(express.json())
