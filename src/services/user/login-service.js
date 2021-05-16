@@ -14,7 +14,7 @@ exports.login = async(email, password) => {
         throw Error(errors.invalidLoginData)
     }
 
-    if (!isMatch(password, user.password)) {
+    if (!(await isMatch(password, user.password))) {
         throw Error(errors.invalidLoginData)
     }
 

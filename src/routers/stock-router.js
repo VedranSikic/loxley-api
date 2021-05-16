@@ -23,7 +23,7 @@ router.get('/stock/:id', auth, async (req, res) => {
             res.send(stocks[0])
         else res.send({})
     } catch (e) {
-        res.status(404).send({ error: e.stack })
+        res.status(404).send({ error: e.message })
     }
 })
 
@@ -32,7 +32,7 @@ router.get('/stock', auth, async (req, res) => {
         const stocks = await getStocks(req.user._id)
         res.send({ stocks })
     } catch (e) {
-        res.status(404).send({ error: e.stack })
+        res.status(404).send({ error: e.message })
     }
 })
 
