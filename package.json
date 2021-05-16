@@ -1,12 +1,13 @@
 {
-    "name": "Mechanism Test Backend",
+    "name": "loxley-api",
     "version": "1.0.0",
     "description": "Backend for test project for Mechanism",
     "main": "app.js",
     "scripts": {
         "test": "env-cmd -f cfg/test.env jest --detectOpenHandles --testEnvironment=node --watchAll",
         "dev": "env-cmd -f cfg/dev.env nodemon app.js",
-        "start": "env-cmd -f cfg/prod.env nodemon app.js"
+        "start": "node app.js",
+        "prod": "node app.js"
     },
     "keywords": [],
     "author": "Vedran Šikić",
