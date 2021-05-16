@@ -6,8 +6,8 @@
     "scripts": {
         "test": "env-cmd -f cfg/test.env jest --detectOpenHandles --testEnvironment=node --watchAll",
         "dev": "env-cmd -f cfg/dev.env nodemon app.js",
-        "start": "node app.js",
-        "prod": "node app.js"
+        "prod": "env-cmd -f cfg/prod.env nodemon app.js",
+        "start": "node app.js"
     },
     "keywords": [],
     "author": "Vedran Šikić",
